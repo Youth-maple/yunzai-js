@@ -7,7 +7,7 @@ export class example extends plugin {
   constructor () {
     super({
       /** 功能名称 */
-      name: '查古诗',
+      name: '查古文',
       /** 功能描述 */
       dsc: '做着玩',
       /** https://oicqjs.github.io/oicq/#events */
@@ -17,7 +17,7 @@ export class example extends plugin {
       rule: [
         {
           /** 命令正则匹配 */
-          reg:'^#*查古诗.*',
+          reg:'^#*查古文.*',
           /** 执行方法 */
           fnc: 'poem'
         }
@@ -27,7 +27,7 @@ export class example extends plugin {
   async poem(e) {
     /** e.msg 用户的命令消息 */
     let msg = this.e.msg
-    let name = msg.replace(/#查古诗/g, '').trim()        
+    let name = msg.replace(/#查古文/g, '').trim()        
     const mes = pinyin(name,{ toneType: 'none'})
     let key = mes.replace(/\s/g,"")
 
@@ -47,7 +47,7 @@ export class example extends plugin {
       let sentence = json.data.sentence
       let pomes = sentence + '--' + author + '《' + name + '》'
       this.reply(pomes,false)} 
-      else {this.reply('没有找到相关的古诗哦',false)} 
+      else {this.reply('没有找到相关的古文哦',false)} 
             
     })
     })
