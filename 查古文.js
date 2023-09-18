@@ -27,9 +27,9 @@ export class example extends plugin {
   async poem(e) {
     /** e.msg 用户的命令消息 */
     let msg = this.e.msg
-    let name = msg.replace(/#查古诗/g, '').trim()        
+    let name = msg.replace(/#查古文/g, '').trim()        
     const mes = pinyin(name,{ toneType: 'none'})
-    let key = mes.join('')
+    let key = mes.replace(/\s/g,"")
 
     /** 古诗接口地址 */
     let url = 'https://open.saintic.com/api/sentence/' + key
@@ -48,6 +48,7 @@ export class example extends plugin {
       let pomes = sentence + '--' + author + '《' + name + '》'
       this.reply(pomes,false)} 
       else {this.reply('没有找到相关的古文哦',false)} 
+            
     })
     })
 
